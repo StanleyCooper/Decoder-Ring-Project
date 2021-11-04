@@ -27,7 +27,7 @@ const polybiusModule = (function () {
 
     // Loop for each input
     for (let char in input) {
-      let letter = input[char];
+      let letter = input[char].toLowerCase();
       let code = letter.charCodeAt(0);
       // Check if our letter is an i or a j
       if (letter === "i" || letter === "j")  {

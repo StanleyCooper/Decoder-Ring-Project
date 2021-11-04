@@ -5,6 +5,8 @@
 
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
+
+  // Our polybius
   const polybiusArray = [
     ["a", "f",     "l", "q", "v"],
     ["b", "g",     "m", "r", "w"],
@@ -16,7 +18,9 @@ const polybiusModule = (function () {
   // Function to check if input in odd
   function isOdd(input) { return input % 2;};
 
-  // Function for encoding
+  /////////////////////
+  // ENCODE FUNCTION //
+  /////////////////////
   function polybiusEncode(input) {
     // Establish our result
     let result = "";
@@ -54,7 +58,9 @@ const polybiusModule = (function () {
     return result;
   }
 
-  // Function for decoding
+  /////////////////////
+  // DECODE FUNCTION //
+  /////////////////////
   function polybiusDecode(input) {
     // Establish our result
     let result = "";
@@ -64,7 +70,7 @@ const polybiusModule = (function () {
        if (input.charCodeAt(i) !== 32) {
          //grab our coordinates
          let x = input[i] - 1;
-         i++;
+         i++; // Add to grab second # in the pair
          let y = input[i] - 1;
          // push into our result
          result += polybiusArray[x][y];

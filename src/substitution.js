@@ -27,9 +27,11 @@ const substitutionModule = (function () {
     for (let char in input) {
       const character = input[char];
       // grab character ASCII code
-      const newPosition = character.charCodeAt(0) - 96;
+      const newPosition = character.charCodeAt(0) - 97;
+      console.log(newPosition);
       // Switch current character to new alphabet
       result += newAlphabet[newPosition]
+      console.log(result);
     }
     return result;
   }

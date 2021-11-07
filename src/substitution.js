@@ -26,17 +26,49 @@ const substitutionModule = (function () {
     // Loop through our input and convert to new alphabet
     for (let char in input) {
       const character = input[char];
-      // grab character ASCII code
-      const newPosition = character.charCodeAt(0) - 97;
-      console.log(newPosition);
-      // Switch current character to new alphabet
-      result += newAlphabet[newPosition]
-      console.log(result);
+      // Check for a space
+      if (character.charCodeAt(0) !== 32) {
+        // grab character ASCII code
+        const newPosition = character.charCodeAt(0) - 97;
+        // Switch current character to new alphabet
+        result += newAlphabet[newPosition];
+      } else {
+        // Add space to our result
+        result += " ";
+      }
     }
     return result;
   }
 
-  function substitution(input, alphabet = 0, encode = true) {
+  /////////////////////
+  // DECODE FUNCTION //
+  /////////////////////
+  function subDecode(input, alphabet) {
+    let result = "";
+    // Turn our substitute alphabet into an array
+    let newAlphabet = alphabet.split("");
+    let inputArray = input.split("");
+    let asciiCode = 96;
+
+    // How the fuck do I do this?
+    // we have a weird coded message, and an alphabet where its location in an array represents its alphabet replacement
+    // We can decode by.... 
+    // Loop through our alphabet
+    // Loop through our input 
+    for (let chars in input) {
+      const character = input[chars];
+      // find that character position in our new alphabet
+      for (let i = 0; i < newAlphabet.length; i++) {
+        if (character === newAlphabet[i]) {
+          const newCharacter = standardAlphabet[i];
+          result += newCharacter;
+        }
+      }
+    }
+    return result;
+  }
+      
+    function substitution(input, alphabet = 0, encode = true) {
     // Check if the given substitution is 26 characters long
     if (alphabet.length === 26 && isUnique(alphabet)) {
       // Check is we are encoding

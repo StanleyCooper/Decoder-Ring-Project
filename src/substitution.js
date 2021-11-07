@@ -47,24 +47,26 @@ const substitutionModule = (function () {
     let result = "";
     // Turn our substitute alphabet into an array
     let newAlphabet = alphabet.split("");
-    let inputArray = input.split("");
-    let asciiCode = 96;
-
-    // How the fuck do I do this?
-    // we have a weird coded message, and an alphabet where its location in an array represents its alphabet replacement
-    // We can decode by.... 
-    // Loop through our alphabet
     // Loop through our input 
     for (let chars in input) {
       const character = input[chars];
-      // find that character position in our new alphabet
-      for (let i = 0; i < newAlphabet.length; i++) {
-        if (character === newAlphabet[i]) {
-          const newCharacter = standardAlphabet[i];
-          result += newCharacter;
+      // grab the character code of currently indexed character
+      let characterCode = character.charCodeAt(0);
+      // Check for a space
+      if (characterCode !== 32) {
+        // find that character position in our new alphabet
+        for (let i = 0; i < newAlphabet.length; i++) {
+          if (character === newAlphabet[i]) {
+            const newCharacter = standardAlphabet[i];
+            result += newCharacter;
+          }
         }
+      } else {
+        // fill in the space
+        result += " ";
       }
     }
+    // return our result
     return result;
   }
       

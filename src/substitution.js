@@ -6,9 +6,8 @@
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
-  // Basic Alphabet Array
+  // Basic Alphabet 
   let standardAlphabet = "abcdefghijklmnopqrstuvwxyz";
-  let standardArray = standardAlphabet.split("");
 
   // Function to check if all characters in a string are unique
   function isUnique(str) {
@@ -29,7 +28,7 @@ const substitutionModule = (function () {
       // Check for a space
       if (character.charCodeAt(0) !== 32) {
         // grab character ASCII code
-        const newPosition = character.charCodeAt(0) - 97;
+        const newPosition = character.toLowerCase().charCodeAt(0) - 97;
         // Switch current character to new alphabet
         result += newAlphabet[newPosition];
       } else {
@@ -49,7 +48,7 @@ const substitutionModule = (function () {
     let newAlphabet = alphabet.split("");
     // Loop through our input 
     for (let chars in input) {
-      const character = input[chars];
+      const character = input[chars].toLowerCase();
       // grab the character code of currently indexed character
       let characterCode = character.charCodeAt(0);
       // Check for a space
